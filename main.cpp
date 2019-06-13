@@ -63,11 +63,14 @@ int main()
     color.resize(e,-1); // Number of Edges.
     memset(vis,0,sizeof(vis));
     int o = 0;
+    map<char, int> force;
     for (auto i = g.edges.begin(); i != g.edges.end(); ++i)
     {
         Edge e = *i;
+
         x = (int)e.src - 65;
         y = (int)e.dest - 65;
+
         graph[x].push_back(make_pair(y,o));
         graph[y].push_back(make_pair(x,o));
         o++;
@@ -75,6 +78,6 @@ int main()
     colour(0);
     for(i=0;i<e;i++)
     {
-        cout<<"Edge "<<i+1<<" is coloured "<<color[i]+1<<"\n";
+        cout<<"Sommet "<<i+1<<" couleur numéro "<<color[i]+1<<"\n";
     }
 }

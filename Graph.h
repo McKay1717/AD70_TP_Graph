@@ -12,6 +12,7 @@
 #include <string>
 #include <stdio.h>
 #include <string.h>
+#include <map>
 struct Edge {
     char src, dest;
 };
@@ -24,6 +25,8 @@ public:
     std::vector<std::string> imcompatibilite;
     vector<Edge> edges;
     void build_graph();
+    map<char, int> force;
+    char tricroissant();
 
 };
 

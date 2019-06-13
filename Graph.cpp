@@ -28,6 +28,29 @@ void Graph::read_file(char *nom_fichier) {
     fichier.close();
     build_graph();
 }
+char Graph::tricroissant()
+{
+    int current_max = -1;
+    char current_max_char = ' ';
+    int force_size = force.size();
+    nodes.clear();
+    for (int i = 0; i < force_size; ++i) {
+
+        map<char, int>::iterator itr;
+        for (itr = force.begin(); itr != force.end(); ++itr) {
+            int key = itr->first;
+            char value = itr->second;
+            if (value >= current_max) {
+                current_max = value;
+                current_max_char = key;
+            }
+        }
+        force.erase(current_max_char);
+        std::string s(1, current_max_char);
+        nodes.push_back(s);
+    }
+
+}
 
 void Graph::build_graph() {
 
@@ -35,11 +58,9 @@ void Graph::build_graph() {
         string s = *i;
         int n = s.length();
 
-        // declaring character array
         char char_array[n + 1];
 
-        // copying the contents of the
-        // string to char array
+
         strcpy(char_array, s.c_str());
         Edge e;
         e.dest = ' ';
@@ -47,17 +68,32 @@ void Graph::build_graph() {
         for (int k = 0; k < n; ++k) {
             if (char_array[k] == 0x00 || char_array[k] == '\n')
                 continue;
-            bool add = true;
 
-            if (e.src == ' ')
+            for (int j = 0; j < n; ++j) {
+                if (char_array[j] == 0x00 || char_array[j] == '\n')
+                    continue;
                 e.src = char_array[k];
-            else
-                e.dest = char_array[k];
-            if (e.src != ' ' && e.dest != ' ') {
-                edges.push_back(e);
-                e.src = e.dest;
-                e.dest = ' ';
+                if (e.src != char_array[j]) {
+                    e.dest = char_array[j];
+                    bool add = true;
+                    for (auto l = edges.begin(); l < edges.end(); ++l) {
+                        Edge local_e = *l;
+                        if(local_e.src == e.dest and local_e.dest == e.src)
+                            add = false;
+                        if(local_e.src == e.src and local_e.dest == e.dest)
+                            add = false;
 
+                    }
+
+
+                    if(add)
+                    {
+                        force[e.src]++;
+                        force[e.dest]++;
+                        edges.push_back(e);
+                    }
+
+                }
 
             }
 
