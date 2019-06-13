@@ -23,7 +23,7 @@ J										0	0
 K											0
 											
 
-Il y a au final 30 contraintes (il suffit de compter le nombre de 1)
+Il y a au final 31 contraintes (il suffit de compter le nombre de 1)
 
 Question 4 : représentation vectorielle
 
@@ -45,4 +45,6 @@ L'algorithme va renvoyer les couleurs de chaque sommet sous forme de numéro.
 
 6)
 
- 
+Une solution de coloration trouvé est :
+
+
