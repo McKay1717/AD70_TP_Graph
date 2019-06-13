@@ -1,7 +1,7 @@
 //
 // Created by nicolas on 13/06/19.
 //
-
+//BRAHMI Nour-eddine - IUNG Nicolas - MANFREDINI Simon
 #ifndef AD70_TP_GRAPH_H
 #define AD70_TP_GRAPH_H
 

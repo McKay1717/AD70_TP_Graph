@@ -1,3 +1,4 @@
+#BRAHMI Nour-eddine - IUNG Nicolas - MANFREDINI Simon
 cmake_minimum_required(VERSION 3.14)
 project(AD70_TP)
 
