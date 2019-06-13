@@ -36,7 +36,6 @@ void colour(int node)
         {
             while(already_colored.find(c)!=already_colored.end())
                 c++;
-            //cout<<graph[node][i].second+1<<" "<<c<<"\n";
             color[graph[node][i].second]=c;
             already_colored.insert(c);
             c++;
